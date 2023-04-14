@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // /api/products
-//Finished
+
 router.get('/', async(req, res) => {
   try{
     const allProducts = await Product.findAll({
@@ -18,7 +18,6 @@ router.get('/', async(req, res) => {
   }
 });
 
-// Finished
 router.get('/:id', async(req, res) => {
   try{
     const oneProduct = await Product.findByPk(req.params.id, { include: [{model: Category}]});
@@ -100,7 +99,6 @@ router.put('/:id', (req, res) => {
     })
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
-      // console.log(err);
       res.status(400).json(err);
     });
 });
