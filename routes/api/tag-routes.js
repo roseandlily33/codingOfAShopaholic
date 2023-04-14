@@ -21,7 +21,7 @@ router.get('/', async(req, res) => {
 router.get('/:id', async(req, res) => {
   try{
     const tagId = await Tag.findByPk(req.params.id, {
-      include: [{model: Product, through: ProductTag}]
+      include: [{model: Product}]
     });
     if(!tagId){
       res.status(404).json({message: 'No product id found'});
@@ -32,7 +32,7 @@ router.get('/:id', async(req, res) => {
     res.status(500).json(err);
   }
 });
-
+// Finished
 router.post('/', async(req, res) => {
   try{
     const newTag = await Tag.create(req.body);
@@ -45,21 +45,39 @@ router.post('/', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
   try{
-
+    const tagData = await Tag.update(
+      {
+      tag_name: req.body.tag_name,
+    }, 
+    {
+      where: {
+        id: req.params.id,
+      }
+    });
+    if(!tagData){
+      res.status(404).json({message: 'Cannot put the tag in'});
+    }
+    res.send(200).json(tagData);
   } catch(err){
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
-  // update a tag's name by its `id` value
 });
 
+//
 router.delete('/:id', async(req, res) => {
   try{
-   
-
+    const delTag = await Tag.destroy({
+      where: {
+        id: req.params.id,
+      }
+    })
+    if(!delTag){
+      res.send(404).json({message: 'Tag not found'});
+    }
+    res.send(200).json(delTag);
   } catch(err){
     res.status(400).json(err);
   }
-  // delete on tag by its `id` value
 });
 
 module.exports = router;
