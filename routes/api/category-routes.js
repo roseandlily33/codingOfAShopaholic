@@ -13,7 +13,7 @@ router.get('/', async(req, res) => {
     res.status(200).json(allCategories);
 
   } catch(err){
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 // Finished
@@ -28,19 +28,18 @@ router.get('/:id', async(req, res) => {
     res.status(200).json(userData)
 ;
   } catch(err){
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
-  // find one category by its `id` value
-  // be sure to include its associated Products
 });
 
+// Issue where it cannot set headers after they are sent to the client:
 router.post('/', async(req, res) => {
   try{
     const newCategory = await Category.create(req.body);
-    res.send(200).json(newCategory);
+    res.status(200).json({message:'New Category Added'} + newCategory);
 
   } catch(err){
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
   // create a new category
 });
@@ -53,22 +52,25 @@ router.put('/:id', async(req, res) => {
 
 
   } catch(err){
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
   // update a category by its `id` value
 });
 
 router.delete('/:id', async(req, res) => {
   try{
-    const deleteCatagory = await deleteCat.destory({
+    const deleteCatagory = await Category.destroy({
       where: {
-        id: req.params.id
+        id: req.params.id,
       }
-    })
+    });
+    if(!deleteCatagory){
+      res.status(404).json({message: 'Cannot find category to delete'});
+    }
     res.status(200).json(deleteCatagory);
 
   } catch(err){
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
