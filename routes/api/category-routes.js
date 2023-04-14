@@ -24,8 +24,8 @@ router.get('/:id', async(req, res) => {
     if(!userData){
       res.status(404).json({message: 'Cannot find user'});
     }
-    res.status(200).json(userData)
-;
+    res.status(200).json(userData);
+
   } catch(err){
     res.status(500).json(err);
   }
