@@ -2,11 +2,11 @@ const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // /api/products
-
+//Finished
 router.get('/', async(req, res) => {
   try{
     const allProducts = await Product.findAll({
-      include: [{model: Product}]
+     include: [{model: Category}, {model: Tag}]
     });
     if(!allProducts){
       res.status(404).json({message: 'No products'})
@@ -16,8 +16,6 @@ router.get('/', async(req, res) => {
   } catch(err){
     res.status(400).json(err);
   }
-  // find all products
-  // be sure to include its associated Category and Tag data
 });
 
 // get one product
