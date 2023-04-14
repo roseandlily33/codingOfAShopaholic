@@ -3,7 +3,6 @@ const { Category, Product } = require('../../models');
 
 // /api/categories
 
-//Finished
 router.get('/', async(req, res) => {
   try{
     const allCategories = await Category.findAll()
@@ -16,7 +15,7 @@ router.get('/', async(req, res) => {
     res.status(500).json(err);
   }
 });
-// Finished
+
 router.get('/:id', async(req, res) => {
   try{
     const userData = await Category.findByPk(req.params.id, {
@@ -32,29 +31,36 @@ router.get('/:id', async(req, res) => {
   }
 });
 
-// Issue where it cannot set headers after they are sent to the client:
 router.post('/', async(req, res) => {
   try{
-    const newCategory = await Category.create(req.body);
-    res.status(200).json({message:'New Category Added'} + newCategory);
+   const newCategory = await Category.create({
+    category_name: req.body.category_name
+   })
+   res.status(200).json(newCategory);
 
   } catch(err){
     res.status(500).json(err);
   }
-  // create a new category
 });
 
 router.put('/:id', async(req, res) => {
   try{
-  const categoryData = await Category.update({
-
-  })
-
-
+  const categoryData = await Category.update(
+    {
+    category_name: req.body.category_name,
+    },
+    {
+      where: {
+        id: req.params.id,
+      }
+    });
+  if(!categoryData){
+    res.status(404).json({message: 'No category found'});
+  }
+  res.status(200).json(categoryData);
   } catch(err){
     res.status(500).json(err);
   }
-  // update a category by its `id` value
 });
 
 router.delete('/:id', async(req, res) => {
