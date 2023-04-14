@@ -5,8 +5,10 @@ Week #13 E-Commence Back End Project
 A project built with starter code for a e-commerce website back-end, using sequelize, node, and express.
 
 ## Screenshots:
+Coming Soon
 
 ## Video:
+Coming Soon
 
 ## What I Learned:
 I learned sequelize, which I really enjoyed, working with more complex, and complicated routes with the models took a minute to understand but I got used to it and then after playing around with it I feel like I understand more of how everything works together.
