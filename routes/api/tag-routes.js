@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // /api/tags
-
+//Finished
 router.get('/', async(req, res) => {
   try{
     const allTags = await Tag.findAll({
