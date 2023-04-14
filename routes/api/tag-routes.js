@@ -1,10 +1,17 @@
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
-// The `/api/tags` endpoint
+// /api/tags
 
 router.get('/', async(req, res) => {
   try{
+    const allTags = await Tag.findAll({
+      include: [{mode: ProductTag}]
+    });
+    if(!allTags){
+      res.status(404).json({message: 'No Tags'});
+    }
+    res.status(200).json(allTags);
 
 
   } catch(err){
@@ -44,6 +51,7 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
   try{
+   
 
   } catch(err){
     res.status(400).json(err);
