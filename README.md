@@ -9,7 +9,8 @@ A project built with starter code for a e-commerce website back-end, using seque
 ## Video:
 
 ## What I Learned:
-I learned sequelize, which I really enjoyed, working with more complex, and complicated routes with the models took a minute to understand but I got used to it and then after playing around with it I feel like I understand more of how everything works together. 
+I learned sequelize, which I really enjoyed, working with more complex, and complicated routes with the models took a minute to understand but I got used to it and then after playing around with it I feel like I understand more of how everything works together.
+I followed the video step by step and took screenshots, so I think that I got everything displaying as it should be.  
 
 ## Usage
 Git clone the repo

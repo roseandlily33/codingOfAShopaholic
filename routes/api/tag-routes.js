@@ -17,7 +17,7 @@ router.get('/', async(req, res) => {
   }
 });
 
-//
+//Finished
 router.get('/:id', async(req, res) => {
   try{
     const tagId = await Tag.findByPk(req.params.id, {
@@ -26,7 +26,7 @@ router.get('/:id', async(req, res) => {
     if(!tagId){
       res.status(404).json({message: 'No product id found'});
     }
-    res.send(200).json(tagId);
+    res.status(200).json(tagId);
 
   } catch(err){
     res.status(500).json(err);
@@ -57,7 +57,7 @@ router.put('/:id', async(req, res) => {
     if(!tagData){
       res.status(404).json({message: 'Cannot put the tag in'});
     }
-    res.send(200).json(tagData);
+    res.status(200).json(tagData);
   } catch(err){
     res.status(500).json(err);
   }
@@ -72,9 +72,9 @@ router.delete('/:id', async(req, res) => {
       }
     })
     if(!delTag){
-      res.send(404).json({message: 'Tag not found'});
+      res.status(404).json({message: 'Tag not found'});
     }
-    res.send(200).json(delTag);
+    res.status(200).json(delTag);
   } catch(err){
     res.status(400).json(err);
   }
