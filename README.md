@@ -9,7 +9,8 @@ The routes include categories, products and tags, and can do a get, post, put, a
 <img width="835" alt="Screenshot 2023-04-16 at 12 48 10 PM" src="https://user-images.githubusercontent.com/109821108/232324521-a27092c0-674d-4b48-9485-0867e80c436d.png">
 
 ## Video:
-https://drive.google.com/file/d/1V5CPR1Ygbtq7vryVXSqj2nfD8-uMeEbP/view
+https://drive.google.com/file/d/1_8gEhkUKqfM0iqtZxNAnnWOKMsC0q-wN/view
+
 
 ## What I Learned:
 I learned sequelize, which I really enjoyed, working with more complex, and complicated routes with the models took a minute to understand but I got used to it and then after playing around with it I feel like I understand more of how everything works together.
